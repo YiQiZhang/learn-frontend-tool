@@ -1,0 +1,33 @@
+{
+  "name": "learn-frontend-tool",
+  "version": "1.0.0",
+  "description": "learn-frontend-tool",
+  "main": "index.js",
+  "scripts": {
+    "start": "node node_modules/webpack/bin/webpack --config src/webpack.config.js --progress --colors --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YiQiZhang/learn-frontend-tool.git"
+  },
+  "keywords": [],
+  "author": "Jerry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YiQiZhang/learn-frontend-tool/issues"
+  },
+  "homepage": "https://github.com/YiQiZhang/learn-frontend-tool",
+  "dependencies": {
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "css-loader": "^0.23.1",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9"
+  }
+}
