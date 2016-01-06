@@ -1,89 +1,60 @@
-var React = require("react");
-var ReactDOM = require("react-dom");
-var jQ = require("jquery");
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
+import CommentBox from './modules/commentBox.jsx'
 
 module.exports = {
     start: function() {
-        var Comment = React.createClass({
-           render: function() {
+
+        const Home = React.createClass({
+           render() {
                return (
-                 <div className="comment">
-                     <h2 className="commentAuthor">{this.props.author}</h2>
-                     {this.props.children}
-                 </div>
-               );
+                   <div>i am home</div>
+               )
            }
         });
 
-        var CommentList = React.createClass({
-            render: function() {
-                var commentNodes = this.props.data.map(function(comment){
-                    return (
-                      <Comment author={comment.author} key={comment.id}>{comment.text}</Comment>
-                    );
-                });
+        const About = React.createClass({
+            render() {
                 return (
-                    <div className="commentList">
-                        {commentNodes}
+                    <div>i am about</div>
+                )
+            }
+        });
+
+        const Comment = React.createClass({
+            render() {
+                return (
+                    <CommentBox url="/response.json" submitUrl="submitResponse.json" />
+                )
+            }
+        });
+
+        const App = React.createClass({
+            render() {
+                return (
+                    <div>
+                        <h1>App</h1>
+                        <ul>
+                            <li><Link to="/about">About</Link></li>
+                            <li><Link to="/comment">Comment</Link></li>
+                        </ul>
+                        {this.props.children}
                     </div>
-                );
+                )
             }
         });
 
-        var CommentForm = React.createClass({
-            getInitialState: function() {
-                return {author: "", text: ""};
-            },
-            render: function() {
-                return (
-                    <form className="commentForm">
-                        <input type="text" placeholder="Your name" />
-                        <input type="text" placeholder="Say something..." />
-                        <input type="submit" value="Post" />
-                    </form>
-                );
-            }
-        });
+        ReactDOM.render((
+            <Router history={browserHistory}>
+                <Route path="/" component={App}>
+                    <IndexRoute component={Home} />
+                    <Route path="about" component={About} />
+                    <Route path="comment" component={Comment} />
+                </Route>
+            </Router>
 
-        var CommentBox = React.createClass({
-            loadDataFromServer: function() {
-                jQ.ajax({
-                   type: "GET",
-                    url: this.props.url,
-                    dataType: "json",
-                    success: function(data) {
-                        if (data.code == 0) {
-                            this.setState({data: data.data});
-                            console.log(data.message);
-                        }
-                    }.bind(this),
-                    error: function(xhr, status, err) {
-                        console.log(err.toString());
-                    }.bind(this)
-                });
-            },
-            getInitialState: function() {
-                return {data: []};
-            },
-            componentDidMount: function() {
-                this.loadDataFromServer();
-            },
-            render: function() {
-                return (
-                    <div className="commentBox">
-                        <h1>Comments</h1>
-                        <CommentList data={this.state.data}/>
-                        <CommentForm/>
-                    </div>
-                );
-            }
-        });
-
-
-
-        ReactDOM.render(
-          <CommentBox url="/response.json"/>,
-          document.getElementById('main-container')
+          ),document.getElementById('main-container')
         );
     }
 };
