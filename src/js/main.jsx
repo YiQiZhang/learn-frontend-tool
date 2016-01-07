@@ -1,15 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
-import CommentBox from './components/commentBox.jsx'
 import App from './components/app.jsx'
+import CommentBox from './components/commentBox.jsx'
 import Home from './components/home.jsx'
 import About from './components/about.jsx'
 import Comment from './components/comment.jsx'
 import SignIn from './components/signin.jsx'
+import TodoList from './components/todoList.jsx'
 
-module.exports = {
-    start: function() {
+export default class qingwei {
+    static start() {
         ReactDOM.render((
             <Router history={browserHistory}>
                 <Route path="/" component={App}>
@@ -17,6 +18,7 @@ module.exports = {
                     <Route path="about" component={About} />
                     <Route path="comment" component={Comment} />
                     <Route path="signin" component={SignIn} />
+                    <Route path="todoList" component={TodoList} />
                 </Route>
             </Router>
 

@@ -10,6 +10,7 @@ export default class App extends Component {
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/comment">Comment</Link></li>
                     <li><Link to="/signin">SignIn</Link></li>
+                    <li><Link to="/todoList">TodoList</Link></li>
                 </ul>
                 {this.props.children}
             </div>

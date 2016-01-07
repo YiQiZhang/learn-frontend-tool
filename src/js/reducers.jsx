@@ -36,7 +36,7 @@ function todos(state = [], action)
         case COMPLETE_TODO:
             return state.map(t =>
                 todo(t, action)
-            )
+            );
         default:
             return state;
     }

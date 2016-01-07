@@ -1,8 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {DatePicker} from 'antd'
-import 'antd/lib/index.css'
 
-let SignIn = React.createClass({
+export default class SignIn extends Component {
     render() {
         return (
             <form>
@@ -11,6 +10,4 @@ let SignIn = React.createClass({
             </form>
         )
     }
-});
-
-module.exports = SignIn;
+}
