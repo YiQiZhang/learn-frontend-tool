@@ -115,4 +115,4 @@ var CommentBox = React.createClass({
     }
 });
 
-module.exports = CommentBox;
+export default CommentBox;

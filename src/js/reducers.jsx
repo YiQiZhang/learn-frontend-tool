@@ -17,7 +17,7 @@ function todo(state, action)
             }
 
             return {
-                ...state,
+                id: state.id,
                 completed: true
             };
         default:
