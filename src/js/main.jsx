@@ -1,9 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
-import {createStore} from 'redux'
-
-import todoApp from './reducers.jsx'
 
 import App from './containers/app.jsx'
 import CommentBox from './components/commentBox.jsx'
@@ -12,8 +9,6 @@ import About from './components/about.jsx'
 import Comment from './components/comment.jsx'
 import SignIn from './components/signin.jsx'
 import TodoListContainer from './components/todoList/todoListContainer.jsx'
-
-let store = createStore(todoApp);
 
 export default class qingwei {
     static start() {

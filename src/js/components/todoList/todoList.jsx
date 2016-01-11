@@ -1,13 +1,16 @@
 import React, {Component, PropTypes} from 'react'
-import {Todo} from './todo.jsx'
+
+import Todo from './todo.jsx'
 
 export default class TodoList extends Component {
     render() {
         return (
             <ul>
-                <Todo text='text 1'
-                      completed={true}
-                      onClick={ index => this.props.onTodoClick(todo.id)} />
+                {this.props.todos.map( todo =>
+                    <Todo key={todo.id}
+                          {...todo}
+                          onClick={() => this.props.onTodoClick(todo.id)} />
+                )}
             </ul>
         )
     }

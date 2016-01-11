@@ -4,6 +4,10 @@ const {SHOW_ALL} = VisibilityFilters;
 
 function todo(state, action)
 {
+
+    console.log(state);
+    console.log(action);
+
     switch (action.type) {
         case ADD_TODO:
             return {
@@ -18,6 +22,7 @@ function todo(state, action)
 
             return {
                 id: state.id,
+                text: state.text,
                 completed: true
             };
         default:
